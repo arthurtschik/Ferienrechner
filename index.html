@@ -26,18 +26,13 @@
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     padding: 24px 20px 20px;
   }
-  /* Glitch-Thema: feine Scanlines über der ganzen Seite (klick-durchlässig) */
-  body::after {
-    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 10;
-    background: repeating-linear-gradient(0deg, rgba(255, 255, 255, .025) 0, rgba(255, 255, 255, .025) 1px, transparent 1px, transparent 3px);
-  }
   main { width: 100%; max-width: 380px; text-align: center; }
   .logo { width: 128px; height: 128px; border-radius: 30px; box-shadow: 0 10px 40px rgba(111, 214, 227, .28); animation: logo-glitch 6s infinite; }
   h1 { margin: 22px 0 4px; font-size: 32px; font-weight: 900; letter-spacing: -1px; }
   .sub { margin: 0 0 30px; color: var(--dim); font-size: 15px; }
   .platform { display: block; margin-top: 6px; color: var(--faint); font-size: 13px; }
 
-  /* Glitch-Titel: zwei versetzte Farbkanäle, die kurz auseinanderlaufen */
+  /* Glitch: fährt ab und zu kurz über Titel und Logo */
   .glitch { position: relative; display: inline-block; }
   .glitch::before, .glitch::after {
     content: attr(data-text); position: absolute; left: 0; top: 0; width: 100%; height: 100%;
@@ -202,7 +197,7 @@
       var blocks = parseNotes(rel.body);
       if (blocks.length && blocks[0].t === "h") blocks.shift(); // Titel steht schon in der Zeile
       blocks = blocks.filter(function (b) { return !(b.t === "p" && /^(Dieses Update kommt|Ferienrechner v\d)/.test(b.text)); });
-      if (!blocks.length) return;
+      if (!blocks.length) blocks = [{ t: "p", text: "Zu dieser Version gibt es keine ausführlichen Release-Notizen." }];
       var body = document.getElementById("newsBody");
       blocks.forEach(function (b) {
         var el;
