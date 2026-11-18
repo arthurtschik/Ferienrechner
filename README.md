@@ -2,6 +2,8 @@
 
 Android-App, die ausrechnet, wie viele Stunden du bis zu den nächsten Ferien (und Brückentagen) noch sammeln musst – mit Schulferien und Feiertagen aller 16 Bundesländer.
 
+Download-Seite: https://arthurtschik.github.io/Ferienrechner/
+
 ## Download und Installation
 1. Unter [Releases](../../releases/latest) die Datei `Ferienrechner.apk` herunterladen.
 2. Datei öffnen und die Installation erlauben (Android fragt einmalig nach der Erlaubnis für „Unbekannte Apps“).
