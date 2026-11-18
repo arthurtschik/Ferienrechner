@@ -197,7 +197,19 @@
       var blocks = parseNotes(rel.body);
       if (blocks.length && blocks[0].t === "h") blocks.shift(); // Titel steht schon in der Zeile
       blocks = blocks.filter(function (b) { return !(b.t === "p" && /^(Dieses Update kommt|Ferienrechner v\d)/.test(b.text)); });
-      if (!blocks.length) blocks = [{ t: "p", text: "Zu dieser Version gibt es keine ausführlichen Release-Notizen." }];
+      if (!blocks.length) blocks = [
+        { t: "p", text: "Die erste Version mit allen Grundfunktionen:" },
+        { t: "ul", items: [
+          "**Stundenrechner:** Soll-Stunden und aktuellen Stand (Std und Min) eingeben, die App rechnet aus, wie viele Stunden du bis zu den Ferien noch sammeln musst.",
+          "**Mehrarbeit:** Anzeige, wie viel mehr du pro Tag und pro Woche arbeiten musst, und welcher Stand nach den Ferien übrig bleibt.",
+          "**Ferien und Brückentage:** frei auswählbar, mit Button „Alle Arbeitstage“ und einzeln abwählbaren Tagen.",
+          "**Schulferien online:** aktuelle Termine für alle 16 Bundesländer, bei jedem Start abgeglichen.",
+          "**Feiertage:** gesetzliche Feiertage aller Bundesländer sind fest eingebaut und werden mit eingerechnet.",
+          "**Ferienkalender:** Monatsansicht mit Ferien, Feiertagen, Brückentagen und deiner Auswahl.",
+          "**Einstellungen:** Bundesland, Arbeitstage pro Woche, haptisches Feedback und Update-Suche direkt in der App.",
+          "**Einrichtung beim ersten Start:** Stundenstand, Soll-Stunden und Bundesland, auch später nachholbar."
+        ] }
+      ];
       var body = document.getElementById("newsBody");
       blocks.forEach(function (b) {
         var el;
